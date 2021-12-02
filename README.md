@@ -37,6 +37,7 @@ strength of the prototype-based inheritance.
 - Elm
 - F#
 - Factor
+- Fantom
 - Genie
 - Groovy
 - Hamler
@@ -52,6 +53,7 @@ strength of the prototype-based inheritance.
 - m4
 - ML
 - MoonScript
+- OSTRAJava
 - Pure
 - PureScript
 - ReasonML
@@ -66,6 +68,7 @@ strength of the prototype-based inheritance.
 ## Used languages
 
 - Ada
+- APL
 - AWK
 - Bash
 - (Free)Basic
@@ -74,6 +77,7 @@ strength of the prototype-based inheritance.
 - C++
 - Cobol
 - Crystal
+- Ceylon
 - D
 - Dart
 - Eiffel
@@ -82,6 +86,7 @@ strength of the prototype-based inheritance.
 - Fortran
 - Go
 - Haskell
+- Io
 - JavaScript
 - Julia
 - Kotlin
