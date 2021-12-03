@@ -1,0 +1,199 @@
+data:
+lines is list of text
+
+procedure:
+    sub readInput
+        parameters:
+            file is text
+            lines is list of text
+        local data:
+            content is text
+        procedure:
+            LOAD FILE file IN content
+            TRIM content IN content
+            SPLIT content BY "\n" IN lines
+    end sub
+
+    sub count
+        parameters:
+            lines is list of text
+            counts is list of number
+        local data:
+            line is text
+            chars is list of text
+            length is number
+            index is number
+            cnt is number
+        procedure:
+            GET LENGTH OF lines:0 IN length
+            FOR index FROM 0 TO length STEP 1 DO
+                PUSH 0 TO counts
+            REPEAT
+
+            FOR EACH line IN lines DO
+                SPLIT line BY "" IN chars
+                FOR index FROM 0 TO length STEP 1 DO
+                    # display "! " index " " chars:index "\n"
+                    IF chars:index IS EQUAL TO "1" THEN
+                        IN counts:index SOLVE counts:index + 1
+                    END IF
+                REPEAT
+            REPEAT
+    end sub
+
+    sub bitmajority
+        parameters:
+            lines is list of text
+            counts is list of number
+            index is number
+            maj is text
+            min is text
+        local data:
+            llength is number
+        procedure:
+            GET LENGTH OF lines IN llength
+            IN llength SOLVE llength / 2
+
+            # display "> " index " " counts:index " @ " llength "\n"
+            IF counts:index IS GREATER THAN OR EQUAL TO llength THEN
+                STORE "1" in maj
+                STORE "0" in min
+            ELSE
+                STORE "0" in maj
+                STORE "1" in min
+            END IF
+    end sub
+
+    sub majority
+        parameters:
+            lines is list of text
+            counts is list of number
+            maj is text
+            min is text
+        local data:
+            bitmaj is text
+            bitmin is text
+            clength is number
+            index is number
+        procedure:
+            GET LENGTH OF counts IN clength
+            FOR index FROM 0 TO clength STEP 1 DO
+                call bitmajority with lines counts index bitmaj bitmin
+                IN maj JOIN maj bitmaj
+                IN min JOIN min bitmin
+            REPEAT
+    end sub
+
+    sub binToNum
+        parameters:
+            bin is text
+            num is number
+        local data:
+            chars is list of text
+            char is text
+        procedure:
+            SPLIT bin BY "" IN chars
+            FOR EACH char IN chars DO
+                IF char IS EQUAL TO "1" THEN
+                    IN num SOLVE num * 2 + 1
+                ELSE
+                    IN num SOLVE num * 2
+                END IF
+            REPEAT
+    end sub
+
+    sub answer
+        parameters:
+            binmaj is text
+            binmin is text
+        local data:
+            maj is number
+            min is number
+            result is number
+        procedure:
+            call binToNum with binmaj maj
+            call binToNum with binmin min
+            # display binmaj "\n" binmin "\n"
+            IN result SOLVE maj * min
+            DISPLAY result "\n"
+    end sub
+
+    sub task1
+        parameters:
+            lines is list of text
+        local data:
+            counts is list of number
+            binmaj is text
+            binmin is text
+        procedure:
+            call count with lines counts
+            call majority with lines counts binmaj binmin
+            call answer with binmaj binmin
+    end sub
+
+    sub filterByBit
+        parameters:
+            lines is list of text
+            bit is text
+            index is number
+            result is list of text
+        local data:
+            line is text
+            char is text
+        procedure:
+            FOR EACH line IN lines DO
+                GET CHARACTER AT index FROM line IN char
+                IF char IS EQUAL TO bit THEN
+                    PUSH line TO RESULT
+                END IF
+            REPEAT
+    end sub
+
+    sub findBy
+        parameters:
+            lines is list of text
+            index is number
+            mode is text # maj/min
+            result is text
+        local data:
+            filtered is list of text
+            counts is list of number
+            bit is text
+            bitmaj is text
+            bitmin is text
+            count is number
+            nextindex is number
+        procedure:
+            call count with lines counts
+            call bitmajority with lines counts index bitmaj bitmin
+            IF mode IS EQUAL TO "maj" THEN
+                STORE bitmaj IN bit
+            ELSE
+                STORE bitmin IN bit
+            END IF
+            call filterByBit with lines bit index filtered
+            GET LENGTH OF filtered IN count
+            IF count IS EQUAL TO 1 THEN
+                STORE filtered:0 IN result
+            ELSE
+                IN nextindex SOLVE index + 1
+                call findBy with filtered nextindex mode result
+            END IF
+    end sub
+
+    sub task2
+        parameters:
+            lines is list of text
+        local data:
+            binmaj is text
+            binmin is text
+        procedure:
+            call findBy with lines 0 "maj" binmaj
+            call findBy with lines 0 "min" binmin
+            call answer with binmaj binmin
+    end sub
+
+    call readInput with argv:0 lines
+    call task1 with lines
+    call task2 with lines
+

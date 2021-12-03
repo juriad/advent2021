@@ -20,6 +20,20 @@ Finding `asNumber`, `String split` and `File` in the guide made me happy as thes
 The most cumbersome part was that only one version of `if` returns value. Being able to easily define two submarines with different behavior shows the
 strength of the prototype-based inheritance.
 
+## Day 3 - LDPL
+
+LDPL was a pleasant surprise.
+It has a nice documentation with examples; it has a well-defined IO and simple data types.
+The biggest disadvantage is its verbosity; you need to define a new variable and write a statement just to increase a variable by one.
+The division of data and procedure is cumbersome.
+Some keywords seem to be superfluous - such as `with`.
+The inspiration of the old languages like `COBOL` or `BASIC` is clear, but it does not feel obsolete - probably due to the good design of data types.
+
+The task itself was simple.
+There was almost no need to work with binary numbers.
+As the language of my choice did not support conversion of bases, I had to implement binary to decimal myself quite trivially.
+
+
 # Lists
 
 ## Language pool
@@ -49,7 +63,6 @@ strength of the prototype-based inheritance.
 - Java
 - Joy
 - jq
-- LDPL
 - m4
 - ML
 - MoonScript
@@ -90,6 +103,7 @@ strength of the prototype-based inheritance.
 - JavaScript
 - Julia
 - Kotlin
+- LDPL
 - (Common)Lisp
 - (UCB)Logo
 - Lua
