@@ -33,6 +33,27 @@ The task itself was simple.
 There was almost no need to work with binary numbers.
 As the language of my choice did not support conversion of bases, I had to implement binary to decimal myself quite trivially.
 
+## Day 4 - Concurnas
+
+My first JVM language.
+It is a relatively new one - form 2019.
+It has a decent documentation, should be easy, right?
+
+Concurnas is terrible; the documentation is just castles in the sky.
+Half of the features that I tried did not work: tuple unpacking has different syntax; the `main` method must return void, not any type; matrix subsection fails to parse.
+I wanted to try to run the code as much in parallel as possible, but it was getting stuck.
+Half of the operators are different from C languages `>==`, `<>`, `and`.
+There is almost non-existent support from IDEs.
+Compilation and startup is so painfully slow.
+When using isolates, the compilation produces lots of class files but further simplification and de-concurnation left it with the expected minimum.
+
+The language has some good ideas though.
+One being the call operator `..` that returns the receiver; this makes easy chaining.
+Another if Python-like `from` imports that can also be in methods.
+Overall, I think this language does not stand a chance in comparison to Kotlin.
+
+The task would have been easy in a different language.
+Were this a work day, I would have not finished yet.
 
 # Lists
 
@@ -73,7 +94,6 @@ As the language of my choice did not support conversion of bases, I had to imple
 - Scala
 - Solidity
 - SNOBOL
-- SpectX
 - TeX
 - TypeScript
 - Unison
@@ -89,6 +109,7 @@ As the language of my choice did not support conversion of bases, I had to imple
 - C
 - C++
 - Cobol
+- Concurnas
 - Crystal
 - Ceylon
 - D

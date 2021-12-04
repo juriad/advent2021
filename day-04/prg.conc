@@ -1,0 +1,118 @@
+from java.util import List, ArrayList, Arrays, TreeMap, NavigableMap
+
+class Bingo(matrix int[2]) {
+    def mark(n int) bool {
+        for (row in 0 to matrix.length-1) {
+            for (col in 0 to matrix[row].length-1) {
+                if (matrix[row, col] == n) {
+                    matrix[row, col] = -n if n <> 0 else Integer.MIN_VALUE
+                    hasRow = checkRow(row)
+                    hasCol = checkCol(col)
+                    if (hasRow or hasCol) {
+                        return true
+                    }
+                }
+            }
+        }
+        false
+    }
+
+    override def toString() String {
+        return Arrays.deepToString(matrix);
+    }
+
+    private def checkRow(row int) bool {
+        unmarked = 0
+        for (col in 0 to matrix[row].length - 1) {
+            if (matrix[row, col] >== 0) {
+                unmarked++
+            }
+        }
+        unmarked == 0
+    }
+
+    private def checkCol(col int) bool {
+        unmarked int = 0
+        for (row in 0 to matrix.length - 1) {
+            if (matrix[row, col] >== 0) {
+                unmarked++
+            }
+        }
+        unmarked == 0
+    }
+
+    def sum() int {
+        sum = 0
+        for (row in 0 to matrix.length-1) {
+            for (col in 0 to matrix[row].length-1) {
+                if (matrix[row, col] >== 0) {
+                    sum += matrix[row, col]
+                }
+            }
+        }
+        sum
+    }
+}
+
+class Prg {
+    def processBoard(lines List<String>) Bingo {
+        board = (Integer.parseInt(num) for num in line.trim().split(" +")) for line in lines
+        matrix = new int[board.size(), board[0].size()]
+        for (row in 0 to board.size() - 1) {
+            for (col in 0 to board[0].size() - 1) {
+                matrix[row, col] = board[row][col]
+            }
+        }
+        lines.clear()
+        new Bingo(matrix)
+    }
+
+    def readInput(file String) (List<int>, List<Bingo>) {
+        import java.nio.file.*
+        path = Paths.get(file)
+        lines = Files.readAllLines(path)
+
+        ints = Integer.parseInt(num) for num in lines[0].split(",")
+        System.out.println(ints)
+        del lines[0]
+        del lines[0]
+
+        board = new ArrayList<String>()
+        bingos = new ArrayList<Bingo>()
+        for (line in lines) {
+            if (line == "") {
+                bingos.add(processBoard(board))
+            } else {
+                board.add(line);
+            }
+        }
+        bingos.add(processBoard(board))
+
+        ints, bingos
+    }
+
+    def task(ints List<int>, bingos List<Bingo>) NavigableMap<int, int> {
+        ends = new TreeMap<int, int>()
+        for (b in bingos) {
+            for (i in ints; idx) {
+                if (b.mark(i)) {
+                    ends.put(idx, i * b.sum())
+                    break
+                }
+            }
+        }
+        return ends
+    }
+
+    def run(file String) {
+        (ints, bingos) = readInput(file)
+        ends = task(ints, bingos)
+        System.out.println("" + ends.firstEntry().value)
+        System.out.println("" + ends.lastEntry().value)
+    }
+}
+
+def main(args String[]) {
+    new Prg().run(args[0])
+    System.out.println("end")
+}
