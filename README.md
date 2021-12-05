@@ -55,6 +55,20 @@ Overall, I think this language does not stand a chance in comparison to Kotlin.
 The task would have been easy in a different language.
 Were this a work day, I would have not finished yet.
 
+## Day 5 - OSTRAJava
+
+Since it is a Sunday, I had a bit more time to fiddle with a - non traditional - language.
+OSTRAJava is a joke on a local dialect of Ostrava and the Java language.
+It is well documented, supported all use cases that I needed.
+Sometimes the errors from the compiler were hard to understand and missed reference to the origin of the error.
+Some features are not implemented: casts, multi-dimensional arrays, `if(bul)`.
+It however had a good enough file reading and number parsing function in its "standard library".
+Syntax was not a big problem when the compiler tells you for the millionth time that you missed `toz` or `pyco`.
+
+As with most of these tasks, you can solve them by brute forcing - just allocate sufficiently big array.
+The task would have been more interesting if the ranges were ints.
+The second part of the task was very expected and also easy to implement.
+
 # Lists
 
 ## Language pool
@@ -87,7 +101,6 @@ Were this a work day, I would have not finished yet.
 - m4
 - ML
 - MoonScript
-- OSTRAJava
 - Pure
 - PureScript
 - ReasonML
@@ -134,6 +147,7 @@ Were this a work day, I would have not finished yet.
 - Nim
 - Objective-C
 - OCaml
+- OSTRAJava
 - (Free)Pascal
 - Perl
 - PHP(7)
