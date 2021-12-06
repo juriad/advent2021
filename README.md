@@ -69,6 +69,19 @@ As with most of these tasks, you can solve them by brute forcing - just allocate
 The task would have been more interesting if the ranges were ints.
 The second part of the task was very expected and also easy to implement.
 
+## Day 6 - jq
+
+I wanted to use `Pure` but that requires a different version of `LLVM` which is still compiling...
+`jq` turned out to be a simple language which is quite powerful thanks to its looping / recursive constructs.
+I guess it was easier to solve the task in `jq` than most other languages.
+It was also handy that its `Number` is a 64 bit floating point type which represents integers precisely up to 48 bits.
+
+The task asked for some statistical information and ti was obvious that we should not simulate each fish independently.
+Since the input looked like CSV, I was fiddling with `jq` to read it.
+After representing the input as a zeroth generation, I used a `while` "loop" to derive the future ones.
+The task was pleasantly simple.
+I was worried that the second part will be something from number theory: what are the last 5 digits of the fish count after 8000000 days.
+
 # Lists
 
 ## Language pool
@@ -97,7 +110,6 @@ The second part of the task was very expected and also easy to implement.
 - J#
 - Java
 - Joy
-- jq
 - m4
 - ML
 - MoonScript
@@ -136,6 +148,7 @@ The second part of the task was very expected and also easy to implement.
 - Io
 - JavaScript
 - Julia
+- jq
 - Kotlin
 - LDPL
 - (Common)Lisp
