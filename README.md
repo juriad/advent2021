@@ -82,6 +82,17 @@ After representing the input as a zeroth generation, I used a `while` "loop" to 
 The task was pleasantly simple.
 I was worried that the second part will be something from number theory: what are the last 5 digits of the fish count after 8000000 days.
 
+## Day 7 - Factor
+
+Factor is pretty nice; I like how it forces you to define the effects on the stack.
+The documentation could be better - sometimes it is not clear what data type is returned, so I had to guess from the error messages.
+The standard library is big and easy to search through.
+It has some graphical interface, but I preferred running it from a command line was.
+
+Today's task looked simple enough for a stack based language.
+The same task had to be solved using two different metrics.
+It was a bit hard to imagine what the stack looks like during two nested maps especially when extra parameters had to passed through.
+
 # Lists
 
 ## Language pool
@@ -98,7 +109,6 @@ I was worried that the second part will be something from number theory: what ar
 - Elixir
 - Elm
 - F#
-- Factor
 - Fantom
 - Genie
 - Groovy
@@ -141,6 +151,7 @@ I was worried that the second part will be something from number theory: what ar
 - Dart
 - Eiffel
 - Erlang
+- Factor
 - Forth
 - Fortran
 - Go
