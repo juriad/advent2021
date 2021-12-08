@@ -133,10 +133,8 @@ I originally wanted to use some CSP solver but hand solving and coming up with r
 - m4
 - ML
 - MoonScript
-- Pure
 - PureScript
 - ReasonML
-- Scala
 - Solidity
 - SNOBOL
 - TeX
@@ -195,6 +193,7 @@ I originally wanted to use some CSP solver but hand solving and coming up with r
 - Red
 - Ruby
 - Rust
+- Scala
 - Sed
 - SQL
 - Squirrel
@@ -224,3 +223,4 @@ I originally wanted to use some CSP solver but hand solving and coming up with r
 - Oz, Mozart - incompatible with Boost 1.7
 - FoxPro - not for Linux
 - ActionScript - Cannot be downloaded
+- Pure - requires different version of LLVM which fails to compile
