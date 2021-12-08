@@ -93,6 +93,16 @@ Today's task looked simple enough for a stack based language.
 The same task had to be solved using two different metrics.
 It was a bit hard to imagine what the stack looks like during two nested maps especially when extra parameters had to passed through.
 
+## Day 8 - Scala
+
+Scala is definitely a confusing language, there are way too many constructs.
+I will need to learn it from the documentation to appreciate it more.
+I like the huge number of extension methods on Maps and Arrays which allow you to express your idea in a simple way.
+
+The task was nice - very obvious what the second part will be.
+I actually implemented both parts at once, so the submission of the latter one took like a minute.
+I originally wanted to use some CSP solver but hand solving and coming up with rules was faster.
+
 # Lists
 
 ## Language pool
