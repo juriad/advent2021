@@ -103,6 +103,22 @@ The task was nice - very obvious what the second part will be.
 I actually implemented both parts at once, so the submission of the latter one took like a minute.
 I originally wanted to use some CSP solver but hand solving and coming up with rules was faster.
 
+## Day 9 - Dylan
+
+Dylan has terrible documentation and project organization.
+Why do I need to create a library and a project?
+Half of the documentation website fails to load; documentation does not describe the syntax of the language.
+It is extremely hard to find anything abut data types, operators, loops.
+I suspect that it is because they are defined as macros in terms of some low-level primitives.
+The documentation of OOP principles is good though.
+The compiler succeeds even when the source contains errors; no idea why?
+I could not do such a simple task as turning a character to a string.
+The warnings are cryptic and not helpful - a missing semicolon or space is hard to find.
+There should exist a plugin for Intellij, but apparently it does not anymore.
+
+The task felt like a chose.
+I hope it was because of the language.
+
 # Lists
 
 ## Language pool
@@ -115,7 +131,6 @@ I originally wanted to use some CSP solver but hand solving and coming up with r
 - C#
 - Closure
 - CoffeeScript
-- Dylan
 - Elixir
 - Elm
 - F#
@@ -157,6 +172,7 @@ I originally wanted to use some CSP solver but hand solving and coming up with r
 - Ceylon
 - D
 - Dart
+- Dylan
 - Eiffel
 - Erlang
 - Factor
