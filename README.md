@@ -119,6 +119,24 @@ There should exist a plugin for Intellij, but apparently it does not anymore.
 The task felt like a chose.
 I hope it was because of the language.
 
+## Day 10 - Flix
+
+I wanted a functional language running on JVM.
+Originally I was to try Eta, but that is exactly like Haskell, not just inspiration, so I ban it.
+Flix is a new language developed at a university.
+It has a nice syntax - it is a blend of Scala and Haskell.
+The function calls and function definitions are the biggest difference.
+It has a nice small standard library and decent documentation.
+It misses better description of syntax.
+Some functions behave differently than in the documentation (`List.fold` is not the same as `List.foldLeft`).
+The syntax with namespaces looks weird - I expect all `fold` and `map` to behave the same way - the correct should be found by the parameter type.
+Also, there is no documentation how to actually run a program; fortunately the source code is simple enough to find it there.
+
+I love this task.
+It was very nice to parse lines char-by-char and keep a stack -  a good match for a functional programing language.
+I kept the parsing state and kept even more information because I did not know what the second part with be.
+It turned out to be as simple as the first one but required different folding.
+
 # Lists
 
 ## Language pool
@@ -176,6 +194,7 @@ I hope it was because of the language.
 - Eiffel
 - Erlang
 - Factor
+- Flix
 - Forth
 - Fortran
 - Go
