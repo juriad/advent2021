@@ -137,6 +137,20 @@ It was very nice to parse lines char-by-char and keep a stack -  a good match fo
 I kept the parsing state and kept even more information because I did not know what the second part with be.
 It turned out to be as simple as the first one but required different folding.
 
+## Day 11 - SNOBOL
+
+SNOBOL has nothing to do with COBOL.
+It is pretty hard to get running; you first need to compile it.
+SNOBOL has a few interesting features; I especially liked the success and failure based GOTO.
+Of course conditions and loops would be better but this was something novel and the language could exploit it nicely.
+The pattern matching also looks way more powerful than I needed in my implementation.
+Arrays and expressions were pleasant to work with.
+It also has a decent documentation.
+
+The task was nice; it immediately called for cell automata which occur so often in Advent of Code.
+I got a bit caught in optimization - I wanted to encode flashes as negative numbers and not normalize them until they are read.
+This was a cause of some bugs that slowed me down.
+
 # Lists
 
 ## Language pool
@@ -169,7 +183,6 @@ It turned out to be as simple as the first one but required different folding.
 - PureScript
 - ReasonML
 - Solidity
-- SNOBOL
 - TeX
 - TypeScript
 - Unison
@@ -230,6 +243,7 @@ It turned out to be as simple as the first one but required different folding.
 - Rust
 - Scala
 - Sed
+- SNOBOL
 - SQL
 - Squirrel
 - Swift
@@ -259,3 +273,4 @@ It turned out to be as simple as the first one but required different folding.
 - FoxPro - not for Linux
 - ActionScript - Cannot be downloaded
 - Pure - requires different version of LLVM which fails to compile
+- Eta - too close to Haskell on JVM

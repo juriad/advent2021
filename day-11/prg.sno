@@ -1,0 +1,166 @@
+    &TRIM = 1
+
+
+
+
+
+
+    DEFINE('READ_FILE(FN)IN,LINE,ROW,COL')      :(READ_FILE_END)
+READ_FILE
+    INPUT('IN', 1, , FN)                        :F(READ_FILE_NO_FILE)
+    READ_FILE = ARRAY('10,10')
+    ROW = 1
+READ_FILE_LINE
+    LINE = IN                                   :F(RETURN)
+    COL = 1
+
+READ_FILE_CHAR
+    LINE ANY('0123456789') . CHAR = ''          :F(READ_FILE_NEXT_LINE)
+    READ_FILE[ROW, COL] = +CHAR
+    COL = COL + 1                               :(READ_FILE_CHAR)
+
+READ_FILE_NEXT_LINE
+    ROW = ROW + 1                               :(READ_FILE_LINE)
+
+READ_FILE_NO_FILE
+    OUTPUT = "CANNOT OPEN FILE " FN             :(FRETURN)
+
+READ_FILE_END
+
+
+
+
+
+
+
+
+    DEFINE('PRINT(CAVE),ROW,COL,LINE')        :(PRINT_END)
+PRINT
+    ROW = 1
+
+PRINT_LINE
+    LINE = ''
+    COL = 1
+
+PRINT_CHAR
+    LINE = LINE CAVE[ROW, COL]                  :F(PRINT_NEXT_LINE)
+    COL = COL + 1                               :(PRINT_CHAR)
+
+PRINT_NEXT_LINE
+    CAVE[ROW, 1] = CAVE[ROW, 1]                 :F(PRINT_NEW_LINE)
+    OUTPUT = LINE
+    ROW = ROW + 1                               :(PRINT_LINE)
+
+PRINT_NEW_LINE
+    OUTPUT = ''                                 :(RETURN)
+
+
+PRINT_END
+
+
+
+
+
+
+
+
+
+    DEFINE('STEP(PREV),ROW,COL,C,INC,F')        :(STEP_END)
+STEP
+    STEP = COPY(PREV)
+    INC = 1
+
+STEP_START
+    ROW = 1
+    F = 0
+
+STEP_ROW
+    COL = 1
+
+STEP_COL
+    C = STEP[ROW, COL]                          :F(STEP_NEXT_ROW)
+    C = LT(C, 0) EQ(INC, 1) 0
+    STEP[ROW, COL] = C + INC
+
+    GT(STEP[ROW, COL], 9)                       :S(STEP_FLASH)
+STEP_AFTER_FLASH
+
+    COL = COL + 1                               :(STEP_COL)
+
+STEP_NEXT_ROW
+    STEP[ROW, 1] = STEP[ROW, 1]                 :F(STEP_NEXT_ROUND)
+    ROW = ROW + 1                               :(STEP_ROW)
+
+STEP_NEXT_ROUND
+    INC = 0
+    FLASHES = FLASHES + F
+    EQ(F, 0)                                    :F(STEP_START) S(STEP_NORMAL)
+
+STEP_FLASH
+    F = F + 1
+    STEP[ROW, COL] = -999
+    STEP[ROW - 1, COL - 1] = STEP[ROW - 1, COL - 1] + 1
+    STEP[ROW - 1, COL + 0] = STEP[ROW - 1, COL + 0] + 1
+    STEP[ROW - 1, COL + 1] = STEP[ROW - 1, COL + 1] + 1
+    STEP[ROW + 0, COL - 1] = STEP[ROW + 0, COL - 1] + 1
+    STEP[ROW + 0, COL + 1] = STEP[ROW + 0, COL + 1] + 1
+    STEP[ROW + 1, COL - 1] = STEP[ROW + 1, COL - 1] + 1
+    STEP[ROW + 1, COL + 0] = STEP[ROW + 1, COL + 0] + 1
+    STEP[ROW + 1, COL + 1] = STEP[ROW + 1, COL + 1] + 1
+                                                :(STEP_AFTER_FLASH)
+
+STEP_NORMAL
+    ROW = 1
+
+STEP_NORMAL_ROW
+    COL = 1
+
+STEP_NORMAL_CHAR
+    C = STEP[ROW, COL]                          :F(STEP_NORMAL_NEXT_ROW)
+    STEP[ROW, COL] = LT(C, 0) 0
+    COL = COL + 1                               :(STEP_NORMAL_CHAR)
+
+STEP_NORMAL_NEXT_ROW
+    STEP[ROW, 1] = STEP[ROW, 1]                 :F(RETURN)
+    ROW = ROW + 1                               :(STEP_NORMAL_ROW)
+
+STEP_END
+
+
+
+
+
+
+
+
+    FN = HOST(2, 2)
+    CAVE = READ_FILE(FN)
+
+    FLASHES = 0
+    STEPS = 0
+
+MAIN_STEP
+    FS = FLASHES
+    CAVE = STEP(CAVE)
+    STEPS = STEPS + 1
+
+    EQ(STEPS, 100)                              :S(MAIN_100)
+MAIN_AFTER_100
+
+    EQ(FLASHES, FS + 100)                       :S(MAIN_SYNC) F(MAIN_STEP)
+MAIN_AFTER_SYNC                                 :(END)
+
+
+
+MAIN_100
+    OUTPUT = FLASHES
+    PRINT(CAVE)                                 :(MAIN_AFTER_100)
+
+MAIN_SYNC
+    OUTPUT = STEPS
+    PRINT(CAVE)                                 :(MAIN_AFTER_SYNC)
+
+
+
+END
+
