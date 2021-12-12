@@ -151,6 +151,15 @@ The task was nice; it immediately called for cell automata which occur so often 
 I got a bit caught in optimization - I wanted to encode flashes as negative numbers and not normalize them until they are read.
 This was a cause of some bugs that slowed me down.
 
+## Day 12 - Fantom
+
+Fantom is an interesting hybrid between Java, C# and Ruby.
+It simplifies a lot of things - no need for arrays and primitive types.
+It has a good documentation and its syntax is decent - all constructs are easy to use.
+
+A nice DFS graph traversal - nothing complicated.
+I originally wanted a language with built-in parallelization, but I couldn't find one that I would like.
+
 # Lists
 
 ## Language pool
@@ -166,7 +175,6 @@ This was a cause of some bugs that slowed me down.
 - Elixir
 - Elm
 - F#
-- Fantom
 - Genie
 - Groovy
 - Hamler
@@ -207,6 +215,7 @@ This was a cause of some bugs that slowed me down.
 - Eiffel
 - Erlang
 - Factor
+- Fantom
 - Flix
 - Forth
 - Fortran
