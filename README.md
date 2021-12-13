@@ -160,6 +160,19 @@ It has a good documentation and its syntax is decent - all constructs are easy t
 A nice DFS graph traversal - nothing complicated.
 I originally wanted a language with built-in parallelization, but I couldn't find one that I would like.
 
+## Day 13 - Yeti
+
+Yeti is a cute Haskell-like language running on JVM.
+Its advantage is that it provides interoperability with Java.
+The syntax is pleasant; my only problem was with semicolon and the unhelpful message when one was omitted.
+It has a decent and detailed documentation and a small standard library.
+This is also one of few languages whose name starts with `Y`; wikipedia only knows three more.
+
+The task was nice.
+I originally planned to represent the whole paper, not just the points but the implementation was just easier this way.
+My choice of a functional language also made composition of folds - ehm, folding them - simple.7
+I forgot what the first task was and actually solved the second one, got a wrong submission and then realized that I was ahead of myself.
+
 # Lists
 
 ## Language pool
@@ -260,6 +273,7 @@ I originally wanted a language with built-in parallelization, but I couldn't fin
 - Vala
 - Vim Script
 - XSLT
+- Yeti
 - Zig
 
 ## Missing letters
@@ -267,7 +281,6 @@ I originally wanted a language with built-in parallelization, but I couldn't fin
 - Q
 - U
 - W
-- Y
 
 ## Banned languages
 

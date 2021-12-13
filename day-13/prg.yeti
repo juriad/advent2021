@@ -1,0 +1,39 @@
+load yeti.lang.io;
+
+fn = _argv[0];
+lines = readFile fn "utf-8" getLines;
+
+{ fst = paperPointsStr, snd = paperFoldsStr } = splitBy ((==) "") lines;
+
+paperPoints = map do line: { x = number (strLeftOf "," line), y = number (strRightOf "," line) } done paperPointsStr;
+
+foldAlongY y points = map do p: { x = p.x, y = if (p.y < y) then p.y else 2 * y - p.y fi } done points;
+foldAlongX x points = map do p: { x = if (p.x < x) then p.x else 2 * x - p.x fi, y = p.y } done points;
+
+paperFolds = map do line: if ((strLeftOf "=" line) == "fold along x") then foldAlongX else foldAlongY fi (number (strRightOf "=" line)) done (tail paperFoldsStr);
+
+sortPoints paper = sortBy do p1 p2: (p1.y < p2.y or (p1.y == p2.y and p1.x < p2.x)) done paper;
+
+printPaper paper = (
+    vertical = map do y: { x = -1, y = y } done [ (fold do acc {x, y}: min y acc done 999 paper) .. (fold do acc {x, y}: max y acc done 0 paper)];
+    horizontal y = map do x: { x = x, y = y } done [ (fold do acc {x, y}: min x acc done 999 paper) .. (fold do acc {x, y}: max x acc done 0 paper)];
+
+    sortedRows = sortPoints (paper ++ vertical);
+    rows = groupBy do p1 p2: p1.y == p2.y done sortedRows;
+
+    rowToStr row = (
+        sortedCols = sortPoints (row ++ horizontal (head row).y);
+        cols = groupBy do p1 p2: p1.x == p2.x done (filter do p: p.x >= 0 done sortedCols);
+        chars = map do col: if ((tail col) == []) then '.' else '#' fi done cols;
+        strJoin '' chars
+    );
+    for (map rowToStr rows) println
+);
+
+
+foldedOnce = (head paperFolds) paperPoints;
+println (length (nub foldedOnce));
+
+paperFold = fold do acc f: do points: f (acc points) done done id paperFolds;
+folded = (paperFold paperPoints);
+printPaper folded
