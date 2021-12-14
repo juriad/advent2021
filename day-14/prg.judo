@@ -1,0 +1,85 @@
+start = "";
+rules = new struct();
+
+lineCnt = 0;
+do #args[0] as lines {
+    if (lineCnt == 0) {
+        start = $_;
+    }
+    if (lineCnt > 1) {
+        ht = $_.split(" -> ");
+        rules.(ht[0]) = ht[1];
+    }
+    lineCnt++;
+}
+
+const #Long = java::java.lang.Long;
+const #Max = #Long.('MAX_VALUE');
+const #Zero = #Max - #Max;
+const #One = #Zero + 1;
+
+
+polymer = new struct();
+polymer.("^" @ start[0]) += #One;
+for (i = 0; i < start.length - 1; i++) {
+    polymer.(start[i : i + 1]) += #One;
+}
+polymer.(start[start.length - 1] @ "$") += #One;
+
+// . start, polymer, rules;
+
+function nextPolymer rules, polymer {
+    next = new struct();
+    for ee in polymer.keys() {
+        c = polymer.(ee);
+        f = rules.(ee);
+        if (f) {
+            ef = ee[0] @ f;
+            fe = f @ ee[1];
+            next.(ef) += c;
+            next.(fe) += c;
+        } else {
+            next.(ee) += c;
+        }
+    }
+    return next;
+}
+
+function countElements(polymer) {
+    elements = new struct();
+    for ee in polymer.keys() {
+        c = polymer.(ee);
+        if (ee[0] != "^") {
+            elements.(ee[0]) += c;
+        }
+    }
+    return elements;
+}
+
+function task rules, polymer, steps {
+    for (i = 0; i < steps; i++) {
+        polymer = nextPolymer(rules, polymer);
+    }
+    counts = countElements(polymer);
+
+    min = #Max;
+    max = #Zero;
+    withMin = null;
+    withMax = null;
+
+    for e in counts.keys() {
+        c = counts.(e);
+        if (c < min) {
+            min = c;
+            withMin = e;
+        }
+        if (c > max) {
+            max = c;
+            withMax = e;
+        }
+    }
+    . max - min;
+}
+
+task(rules, polymer, 10);
+task(rules, polymer, 40);

@@ -173,6 +173,24 @@ I originally planned to represent the whole paper, not just the points but the i
 My choice of a functional language also made composition of folds - ehm, folding them - simple.7
 I forgot what the first task was and actually solved the second one, got a wrong submission and then realized that I was ahead of myself.
 
+## Day 14 - JudoScript
+
+Oh my god, another abandoned JVM language.
+Half of its documentation does not work and half of the reset is TODOs.
+It has interoperability with Java but I hoped that I won't need it much.
+The syntax is ugly and its warning that `struct` will be removed in version 1.1 is funny.
+```
+JudoScript Language 0.9 2005-7-31 (JDK1.3+)
+Copyright 2001-2005 James Jianbo Huang, http://www.judoscript.com
+Tell your friends. Enjoy USING Java!
+Java Runtime Version: 11.0.10+9
+```
+
+The task was obviously aiming for statistics about elements not simulation of the whole polymer.
+I just represented all pairs of elements and kept counts of their occurrences.
+This worked well; the second part just required changing the type to java's `Long`.
+Luckily it was enough and I did not need to use `BigInteger`.
+
 # Lists
 
 ## Language pool
@@ -236,6 +254,7 @@ I forgot what the first task was and actually solved the second one, got a wrong
 - Haskell
 - Io
 - JavaScript
+- JudoScript
 - Julia
 - jq
 - Kotlin
