@@ -191,6 +191,18 @@ I just represented all pairs of elements and kept counts of their occurrences.
 This worked well; the second part just required changing the type to java's `Long`.
 Luckily it was enough and I did not need to use `BigInteger`.
 
+## Day 15 - Rexx
+
+Another older language (keyword mainframe) which looks capable enough.
+It distinguishes between functions and procedures.
+Calls work with the same scope variables by default, which allows some interesting hacks.
+The language does not have arrays but compound variables which behave like associative arrays.
+Data types are quite vague with implicit conversions between string and number.
+
+The task wanted to represent a grid and calculate the shortest distance.
+I did not want to implement any sophisticated priority queue, so a simple one had to do.
+The run time is therefore almost 3 minutes, which is still sufficient.
+
 # Lists
 
 ## Language pool
@@ -280,6 +292,7 @@ Luckily it was enough and I did not need to use `BigInteger`.
 - Racket
 - Raku
 - Red
+- Rexx
 - Ruby
 - Rust
 - Scala
