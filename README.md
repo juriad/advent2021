@@ -203,6 +203,16 @@ The task wanted to represent a grid and calculate the shortest distance.
 I did not want to implement any sophisticated priority queue, so a simple one had to do.
 The run time is therefore almost 3 minutes, which is still sufficient.
 
+## Day 16 - Yoix
+
+The language has a great page on Wikipedia but otherwise all mentions from AT&T are gone.
+Luckily its Github repo with a single commit is useful; it is an interesting idea how to give away all resources to community.
+After unpacking zips, the documentation looks reasonable, not much introduction and guide but technical.
+The language feels very similar to Java except for how scoping of variables work - it felt unpredictable.
+
+Parsing hexadecimal and binary strings into a tree of objects was fun.
+The bignumber (bigger than integer) surprised, but Yaix has a nice support for them too - it represents them as plain old strings.
+
 # Lists
 
 ## Language pool
@@ -306,6 +316,7 @@ The run time is therefore almost 3 minutes, which is still sufficient.
 - Vim Script
 - XSLT
 - Yeti
+- Yoix
 - Zig
 
 ## Missing letters

@@ -1,0 +1,177 @@
+import yoix.*.*;
+
+parseNumber(Array bits, int start, int len) {
+    int n = 0;
+    int i;
+    for (i = 0; i < len; i++) {
+        // printf("num bit %d\n", start + i);
+        n += bits[start + i] << (len - i - 1);
+    }
+    return n;
+}
+
+parseLiteral(Array bits, int start, int end) {
+    String n = "0";
+    int i;
+    for (i = 0;; i++) {
+        int c = parseNumber(bits, start + i * 5 + 1, 4);
+        // printf("lit hex c %d\n",c);
+        n = bigAdd(bigMultiply(n, "16"), toString(c));
+        if (bits[start + 5 * i] == 0) {
+            break;
+        }
+    }
+    Dictionary ret = {
+        String number = n;
+        int consumed = (i + 1) * 5;
+    };
+    return ret;
+}
+
+parseOperator(Array bits, int start, int end) {
+    int lt = bits[start];
+    int consumed = 1;
+
+    Vector packets;
+
+    int cnt;
+    if (lt == 0) {
+        int length = parseNumber(bits, start + 1, 15);
+        consumed += 15;
+        for (cnt = 0; consumed < 16 + length; cnt++) {
+            Dictionary p = parse(bits, start + consumed, start + 16 + length);
+            packets.put(cnt, p);
+            consumed += p.consumed;
+        }
+    } else {
+        int count = parseNumber(bits, start + 1, 11);
+        consumed += 11;
+        for (cnt = 0; cnt < count; cnt++) {
+            Dictionary p = parse(bits, start + consumed, end);
+            packets.put(cnt, p);
+            consumed += p.consumed;
+        }
+    }
+    // printf("%d, %d, %d, %d\n", cnt, packets.size, packets.elements@sizeof, packets.values@sizeof);
+    Dictionary ret = {
+        Array packets = packets.elements;
+        int consumed = consumed;
+    };
+    return ret;
+}
+
+parse(Array bits, int start, int end) {
+    // printf("%d %d\n", start, end);
+
+    int v = parseNumber(bits, start, 3);
+    int t = parseNumber(bits, start + 3, 3);
+
+    // printf("v=%d, t=%d\n", v, t);
+
+    if (t == 4) {
+        Dictionary lit = parseLiteral(bits, start + 6, end);
+        // printf("lit %O\n", lit);
+        Dictionary ret = {
+            int version = v;
+            int type = t;
+            String number = lit.number;
+            int consumed = 6 + lit.consumed;
+        };
+        return ret;
+    } else {
+        Dictionary op = parseOperator(bits, start + 6, end);
+        // printf("op %O\n", op);
+        Dictionary ret = {
+            int version = v;
+            int type = t;
+            Array packets = op.packets;
+            int consumed = 6 + op.consumed;
+        };
+        return ret;
+    }
+}
+
+sumVersions(Dictionary tree) {
+    int sum = tree.version;
+    if (tree.type != 4) {
+        int i;
+        for (i = 0; i < tree.packets@sizeof; i++) {
+            sum += sumVersions(tree.packets[i]);
+        }
+    }
+    return sum;
+}
+
+evaluate(Dictionary tree) {
+    int i;
+    switch(tree.type) {
+        case 0:
+            String sum = evaluate(tree.packets[0]);
+            for (i = 1; i < tree.packets@sizeof; i++) {
+                sum = bigAdd(sum, evaluate(tree.packets[i]));
+            }
+            return sum;
+        case 1:
+            String product = evaluate(tree.packets[0]);
+            for (i = 1; i < tree.packets@sizeof; i++) {
+                product = bigMultiply(product, evaluate(tree.packets[i]));
+            }
+            return product;
+        case 2:
+            String m = evaluate(tree.packets[0]);
+            for (i = 1; i < tree.packets@sizeof; i++) {
+                m = bigMin(m, evaluate(tree.packets[i]));
+            }
+            return m;
+        case 3:
+            String m = evaluate(tree.packets[0]);
+            for (i = 1; i < tree.packets@sizeof; i++) {
+                m = bigMax(m, evaluate(tree.packets[i]));
+            }
+            return m;
+        case 4:
+            return tree.number;
+        case 5:
+            return bigCompareTo(evaluate(tree.packets[0]), evaluate(tree.packets[1])) > 0 ? "1" : "0";
+        case 6:
+            return bigCompareTo(evaluate(tree.packets[0]), evaluate(tree.packets[1])) < 0 ? "1" : "0";
+        case 7:
+            return bigCompareTo(evaluate(tree.packets[0]), evaluate(tree.packets[1])) == 0 ? "1" : "0";
+    }
+}
+
+processLine(String line) {
+    Array chars = strsplit(trim(line), "");
+
+    Array bits[chars@sizeof*4];
+    for (i = 0; i < chars@sizeof; i++) {
+        int c = atoi(chars[i], 16);
+        bits[i * 4 + 0] = (c >> 3) & 1;
+        bits[i * 4 + 1] = (c >> 2) & 1;
+        bits[i * 4 + 2] = (c >> 1) & 1;
+        bits[i * 4 + 3] = (c >> 0) & 1;
+        // printf("%s - %d\n",chars[i], c);
+    }
+    printf(line);
+
+    Dictionary tree = parse(bits, 0, bits@sizeof);
+
+    printf("sum: %d\n", sumVersions(tree));
+    printf("eval: %s\n", evaluate(tree));
+}
+
+main(String fileName) {
+    int MAX_LINE = 1024 * 1024;
+
+    String line[MAX_LINE];
+    File file;
+
+    if ((file = fopen(fileName, "r")) != NULL) {
+        while (fgets(line, MAX_LINE, file) != NULL) {
+            processLine(line);
+        }
+        fclose(file);
+    }
+}
+
+main(argv[1]);
