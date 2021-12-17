@@ -213,6 +213,20 @@ The language feels very similar to Java except for how scoping of variables work
 Parsing hexadecimal and binary strings into a tree of objects was fun.
 The bignumber (bigger than integer) surprised, but Yaix has a nice support for them too - it represents them as plain old strings.
 
+## Day 17 - ColdFusion Markup Language (CFML)
+
+A markup language which you can write scripts in?
+Let's try it.
+Its syntax is very close to Java.
+The only difference is declaring variables with `var` and concatenating strings with `&`.
+It is more interesting by its ecosystem which I did not have time to explore.
+I did not manage to figure out how to pass parameters to the "script".
+
+The first task was simple once you draw it on a paper and remember arithmetic progression.
+The second was a boring simulation over all parameters, which were obvious thanks to the first task.
+In the last years there was a similar task that required simulation of coordinates separately.
+But no such trick was needed here; just the first task got simpler after this idea.
+
 # Lists
 
 ## Language pool
@@ -259,6 +273,7 @@ The bignumber (bigger than integer) surprised, but Yaix has a nice support for t
 - C
 - C++
 - Cobol
+- ColdFusion Markup Language (CFML)
 - Concurnas
 - Crystal
 - Ceylon
