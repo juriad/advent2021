@@ -227,6 +227,21 @@ The second was a boring simulation over all parameters, which were obvious thank
 In the last years there was a similar task that required simulation of coordinates separately.
 But no such trick was needed here; just the first task got simpler after this idea.
 
+## Day 18 - Java
+
+I wanted to use Joy - failed to compile, poor documentation, I had to abandon it.
+Then I tried Whiley - language with built-in verification - the downloaded package differ from description and I could not even make the example work.
+Then I looked at Reason but its project structure looked too complicated - I just wanted a single file to edit.
+So to save time and finally code the task, I chose Java.
+
+I know Java very well, I use it daily but at least I could try the newest features.
+I played with switch expressions, pattern matching, sealed classes, records.
+It was pleasant and the code was quite short but in comparison with true functional languages it was still too verbose.
+
+Knowing the language was a great advantage.
+I was greatly surprised that it worked the on the first try.
+I had to solve the second part later in the evening because I was interrupted by a family visit.
+
 # Lists
 
 ## Language pool
@@ -250,8 +265,6 @@ But no such trick was needed here; just the first task got simpler after this id
 - Idris
 - J
 - J#
-- Java
-- Joy
 - m4
 - ML
 - MoonScript
@@ -290,6 +303,7 @@ But no such trick was needed here; just the first task got simpler after this id
 - Go
 - Haskell
 - Io
+- Java
 - JavaScript
 - JudoScript
 - Julia
@@ -354,3 +368,5 @@ But no such trick was needed here; just the first task got simpler after this id
 - ActionScript - Cannot be downloaded
 - Pure - requires different version of LLVM which fails to compile
 - Eta - too close to Haskell on JVM
+- Joy - does not compile, almost no documentation
+- Whiley - could not make the example to work; it does not produce a class file
