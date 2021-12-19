@@ -242,6 +242,19 @@ Knowing the language was a great advantage.
 I was greatly surprised that it worked the on the first try.
 I had to solve the second part later in the evening because I was interrupted by a family visit.
 
+## Day 19 - Groovy
+
+I always used Groovy as part of Gradle.
+It is very similar to Java; the major difference being how closures are written.
+I did not have much time today so I was not even trying to learn idiomatic Groovy.
+Maybe that was the reason why the language feels like it does not bring anything useful.
+I was actually missing records of Lombok from Java.
+
+The task was hard.
+I was not even trying to optimize anything because it just runs but it takes 96 seconds.
+My solution is basically brute-force with minor pruning.
+I would like to know what the optimum solution would be - but first I will think about it a bit longer.
+
 # Lists
 
 ## Language pool
@@ -258,7 +271,6 @@ I had to solve the second part later in the evening because I was interrupted by
 - Elm
 - F#
 - Genie
-- Groovy
 - Hamler
 - Haxe
 - Icon
@@ -301,6 +313,7 @@ I had to solve the second part later in the evening because I was interrupted by
 - Forth
 - Fortran
 - Go
+- Groovy
 - Haskell
 - Io
 - Java
