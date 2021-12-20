@@ -255,6 +255,21 @@ I was not even trying to optimize anything because it just runs but it takes 96 
 My solution is basically brute-force with minor pruning.
 I would like to know what the optimum solution would be - but first I will think about it a bit longer.
 
+## Day 20 - Ballerina
+
+I was not feeling well, took a sick day and a simpler language.
+The documentation of Ballerina is good but I missed a simple cheatsheet.
+Once I saw a function prefixed with an apostrophe and had no idea what it means.
+The language is still in Beta and could trigger an error in the compiler - I will report it.
+The higher-level data types feel useful.
+I like the distinction between `...` and `..<` operators.
+
+The task was simple enough - just another version of game of life.
+I was worried that there will be too many iterations and the image will drift to one side causing OOM with a trivial implementation.
+That was not the case, but last year's task with pots taught me a lesson.
+What I was not prepared for was the fact that the infinite image flips from dark to light and back.
+This was still simple to fix and submit the correct answer.
+
 # Lists
 
 ## Language pool
