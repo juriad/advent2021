@@ -270,6 +270,18 @@ That was not the case, but last year's task with pots taught me a lesson.
 What I was not prepared for was the fact that the infinite image flips from dark to light and back.
 This was still simple to fix and submit the correct answer.
 
+## Day 21 - PureScript
+
+PureScript is basically Haskell; the challenge here was to use different environment and modules as it transpiles to JavaScript.
+The language requires quite big setup - not just a single file to run.
+The compiler was very helpful both with error descriptions and suggestions for fixing problems with packages.
+
+I was wondering if I should model the process of rolling the die with monads but after seeing the second part I am glad that I did not do it.
+There were just so many options for the second part - it could have been different number of players or some pseudorandom dice.
+The second part was fun, it reminded me Fibonacci sequence and dynamic programming.
+A slight annoyance was the work with big numbers but hey, there was a module for that.
+The solution is not very fast - probably due to using immutable structures - but that is the default in FP languages.
+
 # Lists
 
 ## Language pool
@@ -277,36 +289,48 @@ This was still simple to fix and submit the correct answer.
 - ABC
 - Algol
 - Assembly language
-- Ballerina
+- ATS
 - BCPL
+- Boo
 - C#
+- Ceylon
 - Closure
 - CoffeeScript
 - Elixir
 - Elm
 - F#
 - Genie
+- Fetlang
+- Golo
+- Gosu
+- Gri
 - Hamler
 - Haxe
 - Icon
 - Idris
 - J
 - J#
+- Jelly
+- Kit
+- LoLa
 - m4
 - ML
 - MoonScript
-- PureScript
+- Nickel
+- Noop
 - ReasonML
 - Solidity
 - TeX
 - TypeScript
 - Unison
+- X10
 
 ## Used languages
 
 - Ada
 - APL
 - AWK
+- Ballerina
 - Bash
 - (Free)Basic
 - BC
@@ -354,6 +378,7 @@ This was still simple to fix and submit the correct answer.
 - PostScript
 - Powershell
 - (SWI)Prolog
+- PureScript
 - Python
 - R
 - Racket
