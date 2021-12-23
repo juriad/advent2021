@@ -292,6 +292,21 @@ The task was shouting Kd-tree from the beginning.
 I was trying to prepare good structures which could be reused for the second part but was hoping that my foretelling is wrong.
 The solution using interval splitting was still simpler than expected.
 
+## Day 23 - Haxe
+
+Haxe promises to transpile to multiple languages (JVM, C#, C++, JS, PHP).
+I did try to compile to JVM bytecode but the result was slower than interpretation.
+I struggled mainly with Map with Int64 as key not working as I would expect - splitting to two-level map solved it.
+The documentation is good and the standard library also, but some extra data structures could be present such as priority queue.
+Also `BalancedTree` does not offer methods for getting the first and last key.
+Integer division could have its own operator.
+
+The task took way more time than any other.
+I tried to optimize the diagram and hand-define all possible moves because I was worrying that the space will just be too big.
+The second part turned out to be very unpleasant because in my case it involved using lots of divisions and modulos.
+Hopefully the last tasks will be easier.
+
+
 # Lists
 
 ## Language pool
@@ -314,13 +329,11 @@ The solution using interval splitting was still simpler than expected.
 - Golo
 - Gri
 - Hamler
-- Haxe
 - Icon
 - Idris
 - J
 - J#
 - Jelly
-- Kit
 - LoLa
 - m4
 - ML
@@ -364,6 +377,7 @@ The solution using interval splitting was still simpler than expected.
 - Gosu
 - Groovy
 - Haskell
+- Haxe
 - Io
 - Java
 - JavaScript
@@ -433,3 +447,4 @@ The solution using interval splitting was still simpler than expected.
 - Eta - too close to Haskell on JVM
 - Joy - does not compile, almost no documentation
 - Whiley - could not make the example to work; it does not produce a class file
+- Kit - discontinued, crucial parts of documentations are missing
