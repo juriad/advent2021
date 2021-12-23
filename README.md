@@ -282,6 +282,16 @@ The second part was fun, it reminded me Fibonacci sequence and dynamic programmi
 A slight annoyance was the work with big numbers but hey, there was a module for that.
 The solution is not very fast - probably due to using immutable structures - but that is the default in FP languages.
 
+## Day 22 - Gosu
+
+Gosu is a nice simple language which does not differ much in syntax from Java.
+The differences are easy to grasp.
+The language guide is pleasant but it lacks additional details such as syntax of generic functions or multi-parameter blocks.
+
+The task was shouting Kd-tree from the beginning.
+I was trying to prepare good structures which could be reused for the second part but was hoping that my foretelling is wrong.
+The solution using interval splitting was still simpler than expected.
+
 # Lists
 
 ## Language pool
@@ -302,7 +312,6 @@ The solution is not very fast - probably due to using immutable structures - but
 - Genie
 - Fetlang
 - Golo
-- Gosu
 - Gri
 - Hamler
 - Haxe
@@ -352,6 +361,7 @@ The solution is not very fast - probably due to using immutable structures - but
 - Forth
 - Fortran
 - Go
+- Gosu
 - Groovy
 - Haskell
 - Io
