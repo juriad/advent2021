@@ -306,6 +306,15 @@ I tried to optimize the diagram and hand-define all possible moves because I was
 The second part turned out to be very unpleasant because in my case it involved using lots of divisions and modulos.
 Hopefully the last tasks will be easier.
 
+## Day 24 - Pen and Paper
+
+Today's task was special, there was no need to use any programming language.
+The task was trying hard to hide its simplicity behind number 26 suggesting something with alphabet.
+There was a crucial step to figure out that the transformations of `Z` and its purpose of being a stack.
+The rest was just writing equations and finding their extreme admissible solution.
+I hated the task until I cracked it - I wanted to give up.
+It was even harder because it was on a Christmas day here in the Czech Republic, so I did not have a long uninterrupted session.
+Overall I like the idea of a task that does not involve coding because it is sometimes what programmers do too.
 
 # Lists
 
