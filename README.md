@@ -316,6 +316,16 @@ I hated the task until I cracked it - I wanted to give up.
 It was even harder because it was on a Christmas day here in the Czech Republic, so I did not have a long uninterrupted session.
 Overall I like the idea of a task that does not involve coding because it is sometimes what programmers do too.
 
+## Day 25 - Golo
+
+Golo is a simple JVM languages which mixes and matches features from many languages making it friendly for beginners.
+From certain point of view, the syntax often feels inelegant.
+I like the collections literals and their comprehension.
+
+I knew that this task will be easier because it is the last one - and on the Christmas day.
+It was again a variation on a 2d grid moving around and simulation performed in steps.
+The second part was more fun - it felt very satisfying.
+
 # Lists
 
 ## Language pool
@@ -335,7 +345,6 @@ Overall I like the idea of a task that does not involve coding because it is som
 - F#
 - Genie
 - Fetlang
-- Golo
 - Gri
 - Hamler
 - Icon
@@ -383,6 +392,7 @@ Overall I like the idea of a task that does not involve coding because it is som
 - Forth
 - Fortran
 - Go
+- Golo
 - Gosu
 - Groovy
 - Haskell
